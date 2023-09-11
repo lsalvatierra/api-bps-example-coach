@@ -11,11 +11,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import uy.com.bps.model.Cliente;
+import uy.com.bps.model.Estado;
 import uy.com.bps.service.ClienteService;
 
 
@@ -49,6 +52,12 @@ public class ClienteController {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<>(clientes, HttpStatus.OK);
+	}
+	
+	@PostMapping("")
+	public ResponseEntity<Cliente> crearEstado(@RequestBody Cliente cliente){
+		Cliente nuevoCliente = clienteService.guardar(cliente);
+		return new ResponseEntity<Cliente>(nuevoCliente, HttpStatus.CREATED);	
 	}
 
 }

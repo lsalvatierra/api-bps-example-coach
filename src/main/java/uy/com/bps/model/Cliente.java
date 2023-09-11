@@ -28,5 +28,8 @@ public class Cliente {
 	
 	@Column(name = "dnicliente")
 	private String dnicliente;
+	
+	@Column(name = "img")
+	private String img;
 
 }
